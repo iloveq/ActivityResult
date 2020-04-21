@@ -5,14 +5,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".MainActivity">
-
+    tools:context=".SecondActivity">
     <TextView
-        android:id="@+id/tvJump"
+        tools:text="INPUT"
+        android:id="@+id/tvInput"
         android:gravity="center"
         android:textColor="@android:color/black"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:text="goSecondActivity"/>
+        android:layout_width="100dp"
+        android:layout_height="40dp"/>
+    <Button
+        android:id="@+id/btn"
+        android:text="setResult and back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
