@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.woaigmz.StartSecondActivityForResultContract.Companion.INPUT
-import com.woaigmz.StartSecondActivityForResultContract.Companion.OUTPUT
+import com.woaigmz.result.BaseActivity.Companion.OUTPUT_EXTRA
 import kotlinx.android.synthetic.main.activity_second.*
 
 class SecondActivity : AppCompatActivity(R.layout.activity_second) {
@@ -20,6 +20,6 @@ class SecondActivity : AppCompatActivity(R.layout.activity_second) {
 }
 
 fun Activity.setResultAndFinish(){
-    setResult(Activity.RESULT_OK, Intent().putExtra(OUTPUT," nice "))
+    setResult(Activity.RESULT_OK, Intent().putExtra(OUTPUT_EXTRA," nice "))
     finish()
 }

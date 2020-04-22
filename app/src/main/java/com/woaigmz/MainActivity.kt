@@ -9,18 +9,20 @@ import androidx.activity.invoke
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.appcompat.app.AppCompatActivity
+import com.woaigmz.result.ActivityResultCallback
+import com.woaigmz.result.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class MainActivity : BaseActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         tvJump.setOnClickListener {
             // 1 create contract
-            prepareCall(StartSecondActivityForResultContract()){
-                console("output",it)
-            }.invoke("input:哈哈")
+//            prepareCall(StartSecondActivityForResultContract()){
+//                console("output",it)
+//            }.invoke("input:哈哈")
 
             // 2 must unregister
 //            activityResultRegistry.register("ss",StartActivityForResult()){
@@ -31,6 +33,20 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 //            prepareCall(StartActivityForResult()){
 //
 //            }.launch(Intent())
+
+            prepareCall(object: ActivityResultCallback<String> {
+
+                override fun onGetResult(result: String?) {
+                    console("output",result?:"Null")
+                }
+
+                override fun parseResult(data: Intent?): String? {
+                    return data?.getStringExtra(OUTPUT_EXTRA)
+                }
+
+            }).launch(Intent(this, SecondActivity::class.java).apply {
+                putExtra(StartSecondActivityForResultContract.INPUT,"hhhhh")
+            })
 
         }
     }
