@@ -3,6 +3,7 @@ package com.woaigmz.result
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.os.Bundle
 import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import com.woaigmz.result.Constants.OUTPUT_EXTRA
@@ -63,6 +64,15 @@ private fun <O> Intent.putExtra(name: String, value: O) {
             putExtra(name, value)
         }
         is Int -> {
+            putExtra(name, value)
+        }
+        is Long ->{
+            putExtra(name, value)
+        }
+        is Double ->{
+            putExtra(name, value)
+        }
+        is Bundle ->{
             putExtra(name, value)
         }
         is Parcelable -> {
