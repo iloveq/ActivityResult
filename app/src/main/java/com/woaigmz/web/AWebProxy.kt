@@ -4,19 +4,34 @@ package com.woaigmz.web
  * Created by haoran on 2020/5/28.
  */
 
-object AWebProxy {
+object AWebProxy : IWebProxy.Inner, IWebProxy.Outer {
 
-    private var proxy: IWebProxy? = null
+    private var webSettings: IWebSettings? = null
+    private var isPrintPerformance = false
+    private var isPreInitWebView = true
 
     init {
-
+        // some check
     }
 
-    fun setWebProxy(proxy: IWebProxy) {
-        this.proxy = proxy
+    override fun setWebSettings(webSettings: IWebSettings?): IWebProxy.Outer {
+        this.webSettings = webSettings
+        return this
     }
 
+    override fun isPrintPerformance(isPrintPerformance: Boolean): IWebProxy.Outer {
+        this.isPrintPerformance = isPrintPerformance
+        return this
+    }
 
-    fun getWebSettings(): IWebSettings? = proxy?.getWebSettings()
+    override fun isPreInitWebView(isPreInitWebView: Boolean): IWebProxy.Outer {
+        this.isPreInitWebView = isPreInitWebView
+        return this
+    }
+
+    override fun getWebSettings(): IWebSettings? = this.webSettings
+    override fun isPrintPerformance(): Boolean = this.isPrintPerformance
+    override fun isPreInitWebView(): Boolean = this.isPreInitWebView
+
 
 }

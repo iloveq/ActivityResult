@@ -2,6 +2,7 @@ package com.woaigmz.web
 
 import android.content.ContentProvider
 import android.content.ContentValues
+import android.content.MutableContextWrapper
 import android.database.Cursor
 import android.net.Uri
 
@@ -11,7 +12,7 @@ import android.net.Uri
 class WebPreInitContentProvider : ContentProvider() {
 
     override fun onCreate(): Boolean {
-        // todo
+        val webView = AWebView(MutableContextWrapper(context))
         return true
     }
 
@@ -29,7 +30,12 @@ class WebPreInitContentProvider : ContentProvider() {
         return null
     }
 
-    override fun update(uri: Uri, values: ContentValues?, selection: String?, selectionArgs: Array<String>?): Int {
+    override fun update(
+        uri: Uri,
+        values: ContentValues?,
+        selection: String?,
+        selectionArgs: Array<String>?
+    ): Int {
         return 0
     }
 

@@ -9,12 +9,29 @@ import android.webkit.WebView
  */
 
 interface IWebSettings{
-    fun configWebSettings(webView: WebView): WebSettings
+    fun configWebSettings(webView: WebView): WebSettings?
 }
 
-interface IWebView{}
+interface IWebView{
+    fun onInit()
+    fun onDestroy()
+}
 
 interface IWebProxy{
-    fun getWebSettings(): IWebSettings?
+    // 模块内部 api
+    interface Inner{
+        fun getWebSettings(): IWebSettings?
+        fun isPrintPerformance():Boolean
+        fun isPreInitWebView():Boolean
+    }
+    // 模块外部暴漏的接口
+    interface Outer{
+        fun setWebSettings(webSettings: IWebSettings?):Outer
+        fun isPrintPerformance(isPrintPerformance: Boolean): Outer
+        fun isPreInitWebView(isPreInitWebView: Boolean): Outer
+    }
+
 }
+
+
 

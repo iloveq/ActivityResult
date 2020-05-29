@@ -37,6 +37,9 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             })
 
         }
+        tvJumpWeb.setOnClickListener {
+            startActivity(Intent(this@MainActivity,MyWebViewActivity::class.java))
+        }
     }
 
 }
