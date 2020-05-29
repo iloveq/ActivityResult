@@ -23,6 +23,10 @@
         <activity android:name=".SecondActivity" />
         <service android:name=".web.WebPreInitIntentService"/>
 
+        <provider
+            android:authorities="${applicationId}.preIntWeb"
+            android:name=".web.WebPreInitContentProvider"/>
+
     </application>
 
 
