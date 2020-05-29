@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.os.Build
 import android.os.Process
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.webkit.WebView
 
@@ -24,7 +25,11 @@ class AWebView : WebView, IWebView {
     }
 
     override fun onInit() {
-        AWebProxy.getWebSettings() ?: CustomWebSettings().configWebSettings(this)
+        var webSettings = AWebProxy.getWebSettings()
+        if (webSettings == null) {
+            webSettings = CustomWebSettings()
+        }
+        webSettings.configWebSettings(this)
         removeJavascriptInterfaces(this)
     }
 
@@ -48,6 +53,7 @@ class AWebView : WebView, IWebView {
     override fun drawChild(canvas: Canvas, child: View?, drawingTime: Long): Boolean {
         val ret = super.drawChild(canvas, child, drawingTime)
         if (AWebProxy.isPrintPerformance()) {
+            Log.e("AWebView", "start show Performance")
             canvas.save()
             val paint = Paint()
             paint.color = 0x7fff0000

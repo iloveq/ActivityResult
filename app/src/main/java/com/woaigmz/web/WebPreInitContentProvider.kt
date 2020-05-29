@@ -13,6 +13,7 @@ class WebPreInitContentProvider : ContentProvider() {
 
     override fun onCreate(): Boolean {
         val webView = AWebView(MutableContextWrapper(context))
+        WebViewPools.recycle(webView)
         return true
     }
 
