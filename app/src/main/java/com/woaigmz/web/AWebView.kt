@@ -52,8 +52,8 @@ class AWebView : WebView, IWebView {
 
     override fun drawChild(canvas: Canvas, child: View?, drawingTime: Long): Boolean {
         val ret = super.drawChild(canvas, child, drawingTime)
+        Log.e("AWebView", "start show Performance")
         if (AWebProxy.isPrintPerformance()) {
-            Log.e("AWebView", "start show Performance")
             canvas.save()
             val paint = Paint()
             paint.color = 0x7fff0000
@@ -64,7 +64,7 @@ class AWebView : WebView, IWebView {
                 this.context.packageName.toString() + "-pid:"
                         + Process.myPid(), 10f, 50f, paint
             )
-            canvas.drawText("Sys Core", 10f, 100f, paint)
+            canvas.drawText("AWebView", 10f, 100f, paint)
             canvas.drawText(Build.MANUFACTURER, 10f, 150f, paint)
             canvas.drawText(Build.MODEL, 10f, 200f, paint)
             canvas.restore()

@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.MutableContextWrapper
 import android.database.Cursor
 import android.net.Uri
+import android.util.Log
 
 /**
  * Created by haoran on 2020/5/29.
@@ -12,8 +13,11 @@ import android.net.Uri
 class WebPreInitContentProvider : ContentProvider() {
 
     override fun onCreate(): Boolean {
-        val webView = AWebView(MutableContextWrapper(context))
-        WebViewPools.recycle(webView)
+        if(AWebProxy.isPreInitWebView()){
+            val webView = AWebView(MutableContextWrapper(context))
+            Log.e("AWebView","->init")
+            WebViewPools.recycle(webView)
+        }
         return true
     }
 
