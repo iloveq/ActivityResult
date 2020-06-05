@@ -14,7 +14,7 @@ class MyWebViewActivity : AppCompatActivity() {
         val webView:WebView? =  WebViewPools.acquireWebView(this)
         webView?.let {
             rootView.addView(it)
-            it.loadUrl("https://www.baidu.com")
+            //it.loadUrl("https://www.baidu.com")
         }
     }
 }

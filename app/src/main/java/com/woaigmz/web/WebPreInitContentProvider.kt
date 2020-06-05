@@ -18,6 +18,7 @@ class WebPreInitContentProvider : ContentProvider() {
             Log.e("AWebView","->init")
             if(AWebProxy.getPreInitUrl().isNotEmpty()){
                 webView.loadUrl(AWebProxy.getPreInitUrl())
+                Log.e("AWebView","->url = " + AWebProxy.getPreInitUrl())
             }
             WebViewPools.recycle(webView)
         }

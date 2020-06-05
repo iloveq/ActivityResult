@@ -8,7 +8,7 @@ object AWebProxy : IWebProxy.Inner, IWebProxy.Outer {
 
     private var webSettings: IWebSettings? = null
     private var isPrintPerformance = false
-    private var isPreInitWebView = true
+    private var isPreInitWebView = false
     private var preInitUrl = ""
 
     init {
