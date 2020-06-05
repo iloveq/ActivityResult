@@ -9,6 +9,7 @@ object AWebProxy : IWebProxy.Inner, IWebProxy.Outer {
     private var webSettings: IWebSettings? = null
     private var isPrintPerformance = false
     private var isPreInitWebView = true
+    private var preInitUrl = ""
 
     init {
         // some check
@@ -29,9 +30,17 @@ object AWebProxy : IWebProxy.Inner, IWebProxy.Outer {
         return this
     }
 
+    override fun setPreInitUrl(url: String): IWebProxy.Outer {
+        this.isPreInitWebView = true
+        this.preInitUrl = url
+        return this
+    }
+
     override fun getWebSettings(): IWebSettings? = this.webSettings
     override fun isPrintPerformance(): Boolean = this.isPrintPerformance
     override fun isPreInitWebView(): Boolean = this.isPreInitWebView
+    override fun getPreInitUrl(): String = this.preInitUrl
 
 
 }
+

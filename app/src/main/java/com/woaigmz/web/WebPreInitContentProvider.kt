@@ -16,6 +16,9 @@ class WebPreInitContentProvider : ContentProvider() {
         if(AWebProxy.isPreInitWebView()){
             val webView = AWebView(MutableContextWrapper(context))
             Log.e("AWebView","->init")
+            if(AWebProxy.getPreInitUrl().isEmpty()){
+                webView.loadUrl(AWebProxy.getPreInitUrl())
+            }
             WebViewPools.recycle(webView)
         }
         return true

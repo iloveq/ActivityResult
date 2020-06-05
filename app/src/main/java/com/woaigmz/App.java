@@ -12,9 +12,20 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+//        AWebProxy.INSTANCE
+//                .setWebSettings(null)
+//                .isPreInitWebView(true)
+//                .isPrintPerformance(true);
+
+//        AWebProxy.INSTANCE
+//                .isPreInitWebView(true)
+//                .isPrintPerformance(true);
+
+
         AWebProxy.INSTANCE
                 .setWebSettings(null)
-                .isPreInitWebView(true)
+                .setPreInitUrl("https://www.baidu.com")
                 .isPrintPerformance(true);
+
     }
 }

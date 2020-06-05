@@ -23,12 +23,14 @@ interface IWebProxy{
         fun getWebSettings(): IWebSettings?
         fun isPrintPerformance():Boolean
         fun isPreInitWebView():Boolean
+        fun getPreInitUrl():String
     }
     // 模块外部暴漏的接口
     interface Outer{
         fun setWebSettings(webSettings: IWebSettings?):Outer
         fun isPrintPerformance(isPrintPerformance: Boolean): Outer
         fun isPreInitWebView(isPreInitWebView: Boolean): Outer
+        fun setPreInitUrl(url: String) :Outer
     }
 
 }
