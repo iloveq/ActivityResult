@@ -13,6 +13,16 @@ public class App extends Application {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
+
+        //        AWebProxy.INSTANCE
+//                .setWebSettings(null)
+//                .isPreInitWebView(true)
+//                .isPrintPerformance(true);
+
+//        AWebProxy.INSTANCE
+//                .isPreInitWebView(true)
+//                .isPrintPerformance(true);
+
         AWebProxy.INSTANCE
                 .setWebSettings(null)
                 .setPreInitUrl("https://www.baidu.com")
@@ -22,17 +32,5 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-//        AWebProxy.INSTANCE
-//                .setWebSettings(null)
-//                .isPreInitWebView(true)
-//                .isPrintPerformance(true);
-
-//        AWebProxy.INSTANCE
-//                .isPreInitWebView(true)
-//                .isPrintPerformance(true);
-
-
-
-
     }
 }
